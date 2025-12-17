@@ -1,6 +1,6 @@
 <?php
 
-// Abstract class cannot use directly (required derived class)
+// Abstract class cannot use directly (required derived class) mean cannot make object of it 
 
 // FOR ABSTRACT CLASS 2 CONNDITION FOLLOWS
 // 1.must have ABSTRACT METHOD (atleast 1)
