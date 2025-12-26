@@ -1,5 +1,18 @@
 <?php
 
+
+// MEthod Overriding = derived class override parent class method, different classes(base + derived), has same type and name, support in PHP
+// Method Overloading = two method has same name but differet type in same class, not support in PHP
+/*
+🔹 Overloading vs Overriding (Interview Table)
+| Feature          | Overloading  | Overriding     |
+| ---------------- | ------------ | -------------- |
+| Same method name | Yes          | Yes            |
+| Parameters       | Different    | Same           |
+| Class            | Same class   | Parent → Child |
+| PHP support      | Indirect     | Yes            |
+| Polymorphism     | Compile-time | Runtime        |
+*/
 class base
 {
     public $name;
