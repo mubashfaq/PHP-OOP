@@ -21,7 +21,6 @@ class Employee
 // The new class is called the subclass, and the existing class is called the superclass.
 // The subclass inherits the properties and methods of the superclass.
 // The subclass can add new properties and methods, or override the properties and methods of the superclass.
-// The subclass can also call the methods of the superclass.
 // The subclass can also call the properties of the superclass.
 // The subclass can also call the methods of the superclass.
 class Manager extends Employee{
