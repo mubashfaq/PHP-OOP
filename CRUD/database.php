@@ -20,23 +20,44 @@ class Database
         }
     }
 
-    public function insert()
+    public function insert($table, $params = array())
     {
-   
+        if ($this->tableExists($table)) {
+
+            $column = implode(",", array_keys($params));
+            $values = implode("','", array_values($params));
+
+            $sql = "INSERT INTO $table ($column) VALUES ('$values')";
+
+            $result = $this->conn->query($sql);
+            
+            if($result){
+                echo "Record created Successfully";
+            }else{
+                echo "Record not created";
+            }
+        }
     }
 
-    public function delete()
-    {
+    public function delete() {}
 
-    }
-
-    public function update()
-    {
-        
-
-    }
+    public function update() {}
 
     // public function 
+
+    private function tableExists($table)
+    {
+        $sql = "SHOW TABLES LIKE '$table'";
+        $tableInDb = $this->conn->query($sql);
+        if ($tableInDb) {
+            if ($tableInDb->num_rows == 1) {
+                return true;
+            } else {
+                echo "$table does not exist";
+                return false;
+            }
+        }
+    }
 
     public function __destruct()
     {
