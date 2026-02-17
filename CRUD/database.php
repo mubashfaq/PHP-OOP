@@ -30,20 +30,34 @@ class Database
             $sql = "INSERT INTO $table ($column) VALUES ('$values')";
 
             $result = $this->conn->query($sql);
-            
-            if($result){
+
+            if ($result) {
                 echo "Record created Successfully";
-            }else{
+            } else {
                 echo "Record not created";
             }
         }
     }
 
-    public function delete() {}
-
-    public function update($table, $where, $params = array()) 
+    public function delete($table, $where)
     {
-        if($this->tableExists($table)){
+        if ($this->tableExists($table)) {
+
+            $sql = "DELETE FROM $table WHERE $where";
+            
+            $result = $this->conn->query($sql);
+
+            if ($result) {
+                echo "Record Deleted Successfully";
+            } else {
+                echo "Record Deletion Failed";
+            }
+        }
+    }
+
+    public function update($table, $where, $params = array())
+    {
+        if ($this->tableExists($table)) {
 
             $args = array();
             foreach ($params as $key => $value) {
@@ -54,18 +68,15 @@ class Database
 
             $result = $this->conn->query($sql);
 
-            if($result){
+            if ($result) {
                 echo "Record Updated Successfully";
-            }else{
+            } else {
                 echo "Record Update Failed";
             }
         }
     }
 
-    public function select() 
-    {
-
-    }
+    public function select() {}
 
     private function tableExists($table)
     {
