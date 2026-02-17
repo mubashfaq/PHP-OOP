@@ -41,9 +41,31 @@ class Database
 
     public function delete() {}
 
-    public function update() {}
+    public function update($table, $where, $params = array()) 
+    {
+        if($this->tableExists($table)){
 
-    // public function 
+            $args = array();
+            foreach ($params as $key => $value) {
+                $args[] = "$key = '$value'";
+            }
+
+            $sql = "UPDATE $table SET " . implode(',', $args) . " WHERE $where";
+
+            $result = $this->conn->query($sql);
+
+            if($result){
+                echo "Record Updated Successfully";
+            }else{
+                echo "Record Update Failed";
+            }
+        }
+    }
+
+    public function select() 
+    {
+
+    }
 
     private function tableExists($table)
     {
