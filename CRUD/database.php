@@ -44,7 +44,7 @@ class Database
         if ($this->tableExists($table)) {
 
             $sql = "DELETE FROM $table WHERE $where";
-            
+
             $result = $this->conn->query($sql);
 
             if ($result) {
@@ -76,7 +76,36 @@ class Database
         }
     }
 
-    public function select() {}
+    public function select($table, $where = null)
+    {
+        if ($this->tableExists($table)) {
+
+            $sql  = "SELECT * FROM $table";
+
+            if($where){
+                $sql .= " WHERE $where";
+            }else{
+                $sql;
+            }
+
+            $result = $this->conn->query($sql);
+
+            if ($result && $result->num_rows > 0) {
+
+                $rows = array();
+
+                while ($row = $result->fetch_assoc()) {
+                    $rows[] = $row;
+                }
+
+                echo '<pre>';
+                print_r($rows);
+                echo '</pre>';
+            } else {
+                return false;
+            }
+        }
+    }
 
     private function tableExists($table)
     {
