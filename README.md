@@ -14,3 +14,5 @@ Encapsulation — hiding internal data and exposing a public API (via visibility
 Inheritance — a class can extend another class and reuse/override behavior.
 Polymorphism — objects of different classes can be used through a common interface/parent type.
 Abstraction — defining abstract classes/methods to force sub-classes to implement behavior.
+
+important for complex projects
