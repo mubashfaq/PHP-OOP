@@ -16,3 +16,6 @@ Polymorphism — objects of different classes can be used through a common inter
 Abstraction — defining abstract classes/methods to force sub-classes to implement behavior.
 
 important for complex projects
+Static class
+Traits
+NameSpace
