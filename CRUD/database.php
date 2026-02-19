@@ -76,16 +76,29 @@ class Database
         }
     }
 
-    public function select($table, $where = null)
+    public function select($table, $where = null, $orderBy = null, $limit = null)
     {
         if ($this->tableExists($table)) {
 
             $sql  = "SELECT * FROM $table";
 
-            if($where){
+            if (!empty($where)) {
                 $sql .= " WHERE $where";
-            }else{
-                $sql;
+            }
+        
+            if (!empty($orderBy)) {
+                $sql .= " ORDER BY $orderBy";
+            }
+
+            if(!empty($limit)) {
+                if(isset($_GET['page'])){
+                    $page = $_GET['page'];
+                }else{
+                    $page = 1;
+                }
+
+                $start = ($page - 1) * $limit;
+                $sql .= " LIMIT $start, $limit";
             }
 
             $result = $this->conn->query($sql);
@@ -118,6 +131,8 @@ class Database
                 echo "$table does not exist";
                 return false;
             }
+        }else{
+            return false;
         }
     }
 

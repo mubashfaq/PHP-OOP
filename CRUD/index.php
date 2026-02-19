@@ -10,4 +10,4 @@ $obj = new Database();
 
 // $obj->delete('users', 'id = "2"');
 
-$obj->select('users', 'id = "5"');
+$obj->select('users',null, null, 2);
